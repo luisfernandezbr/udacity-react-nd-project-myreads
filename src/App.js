@@ -7,13 +7,27 @@ import * as BooksAPI from './data/BooksAPI'
 
 class App extends Component {
     state = {
-        bookList: []
+        bookListReading: [],
+        bookListWantToRead: [],
+        bookListRead: []
     }
 
     componentDidMount () {
         BooksAPI.getAll().then(books => {
-            this.setState({
-                bookList: books
+            books.map(book => {
+                if (book.shelf === 'currentlyReading') {
+                    this.setState({
+                        bookListReading: this.state.bookListReading.concat(book)
+                    });
+                } else if (book.shelf === 'wantToRead') {
+                    this.setState({
+                        bookListWantToRead: this.state.bookListWantToRead.concat(book)
+                    });
+                } else if (book.shelf === 'read') {
+                    this.setState({
+                        bookListRead: this.state.bookListRead.concat(book)
+                    });
+                }
             });
         });
     }
@@ -28,8 +42,14 @@ class App extends Component {
                 <p className="App-intro">
                     To get started, edit <code>src/App.js</code> and save to reload.
                 </p>
-                <TitleView titleText="My Title"/>
-                <BookListView bookList={this.state.bookList}/>
+                <TitleView titleText="Currently Reading"/>
+                <BookListView bookList={this.state.bookListReading}/>
+
+                <TitleView titleText="Want to Read"/>
+                <BookListView bookList={this.state.bookListWantToRead}/>
+
+                <TitleView titleText="Read"/>
+                <BookListView bookList={this.state.bookListRead}/>
             </div>
         );
     }
