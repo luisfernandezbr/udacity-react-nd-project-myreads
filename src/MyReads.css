@@ -1,0 +1,14 @@
+.mr-title {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.mr-title-text {
+    text-align: left;
+    font-size: 1.5em;
+}
+
+.mr-title-line {
+    height: 2px;
+    background: gray;
+}
