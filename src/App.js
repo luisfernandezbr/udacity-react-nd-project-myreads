@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import TitleView from './TitleView'
-import BookView from "./BookView";
+import TitleView from './view/TitleView'
+import BookView from "./view/BookView";
 
 class App extends Component {
     render() {
