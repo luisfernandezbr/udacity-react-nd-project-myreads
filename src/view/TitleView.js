@@ -8,11 +8,11 @@ class TitleView extends Component {
     }
 
     render() {
-        const titleText = this.props.titleText;
+        const textTitle = this.props.textTitle;
 
         return (
             <div className="mr-title">
-                <p className="mr-title-text">{titleText}</p>
+                <p className="mr-title-text">{textTitle}</p>
                 <div className="mr-title-line" />
             </div>
         );
