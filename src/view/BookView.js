@@ -12,10 +12,11 @@ class BookView extends Component {
         return (
             <div>
                 <img className="mr-book" style={{
-                    backgroundImage: `url(${book.previewUrl})`
+                    backgroundImage: `url(${book.imageLinks.thumbnail})`
                 }}/>
                 <div>{book.title}</div>
-                <div>{book.author}</div>
+                <div>{book.authors}</div>
+                <br />
             </div>
         );
     }
