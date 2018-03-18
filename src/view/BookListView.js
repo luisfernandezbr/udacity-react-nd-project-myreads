@@ -1,21 +1,19 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import BookView from "./BookView";
+import PropTypes from 'prop-types'
 
 
 class BookListView extends Component {
+    propTypes = {
+        bookList: PropTypes.array.isRequired
+    }
+
     render() {
         return (
             <div>
-                <BookView book={{
-                    title:"The Linux Command Line",
-                    author:"William E. Shotts, Jr.",
-                    previewUrl:"http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-                }}/>
-                <BookView book={{
-                    title:"The Linux Command Line",
-                    author:"William E. Shotts, Jr.",
-                    previewUrl:"http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-                }}/>
+                {this.props.bookList.map(
+                    book => <BookView book={book} />
+                )}
             </div>
         );
     }

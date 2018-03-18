@@ -12,6 +12,7 @@ class App extends Component {
             author:"William E. Shotts, Jr.",
             previewUrl:"http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
         }
+        const bookList = [book, book, book];
 
         return (
             <div className="App">
@@ -24,7 +25,7 @@ class App extends Component {
                 </p>
                 <TitleView titleText="My Title"/>
 
-                <BookListView />
+                <BookListView bookList={bookList}/>
             </div>
         );
     }
