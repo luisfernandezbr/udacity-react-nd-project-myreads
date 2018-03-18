@@ -6,6 +6,12 @@ import BookView from "./BookView";
 
 class App extends Component {
     render() {
+        const book = {
+            title:"The Linux Command Line",
+            author:"William E. Shotts, Jr.",
+            previewUrl:"http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        }
+
         return (
             <div className="App">
                 <header className="App-header">
@@ -16,7 +22,7 @@ class App extends Component {
                     To get started, edit <code>src/App.js</code> and save to reload.
                 </p>
                 <TitleView titleText="My Title"/>
-                <BookView/>
+                <BookView book={book}/>
             </div>
         );
     }
