@@ -10,12 +10,12 @@ class BookView extends Component {
         const book = this.props.book;
 
         return (
-            <div>
-                <img alt={book.name} className="mr-book" style={{
+            <div className="mr-book">
+                <img alt={book.name} className="mr-book-image" style={{
                     backgroundImage: `url(${book.imageLinks.thumbnail})`
                 }}/>
-                <div>{book.title}</div>
-                <div>{book.authors}</div>
+                <div className="mr-book-title">{book.title}</div>
+                <div className="mr-book-author">{book.authors}</div>
                 <br />
             </div>
         );

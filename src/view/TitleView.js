@@ -12,8 +12,7 @@ class TitleView extends Component {
 
         return (
             <div className="mr-title">
-                <p className="mr-title-text">{textTitle}</p>
-                <div className="mr-title-line" />
+                <h2 className="mr-title-text">{textTitle}</h2>
             </div>
         );
     }
