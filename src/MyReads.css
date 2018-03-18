@@ -12,3 +12,10 @@
     height: 2px;
     background: gray;
 }
+
+.mr-book {
+    background: aquamarine;
+    height: 240px;
+    width: 180px;
+    padding: 10px;
+}

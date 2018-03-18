@@ -4,7 +4,9 @@ class BookView extends Component {
     render() {
         return (
             <div>
-                text
+                <img className="mr-book"/>
+                <div>Book Title</div>
+                <div>Author</div>
             </div>
         );
     }
