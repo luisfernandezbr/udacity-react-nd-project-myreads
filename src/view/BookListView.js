@@ -3,7 +3,7 @@ import BookView from "./BookView";
 import PropTypes from 'prop-types'
 
 class BookListView extends Component {
-    propTypes = {
+    static propTypes = {
         bookList: PropTypes.array.isRequired
     }
     render() {
