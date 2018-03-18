@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import TitleView from './view/TitleView'
 import BookView from "./view/BookView";
+import BookListView from "./view/BookListView";
 
 class App extends Component {
     render() {
@@ -22,7 +23,8 @@ class App extends Component {
                     To get started, edit <code>src/App.js</code> and save to reload.
                 </p>
                 <TitleView titleText="My Title"/>
-                <BookView book={book}/>
+
+                <BookListView />
             </div>
         );
     }
