@@ -11,7 +11,7 @@ class BookView extends Component {
 
         return (
             <div>
-                <img className="mr-book" style={{
+                <img alt={book.name} className="mr-book" style={{
                     backgroundImage: `url(${book.imageLinks.thumbnail})`
                 }}/>
                 <div>{book.title}</div>
