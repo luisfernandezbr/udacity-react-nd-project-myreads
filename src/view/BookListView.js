@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import BookView from "./BookView";
 import PropTypes from 'prop-types'
 
-
 class BookListView extends Component {
     propTypes = {
         bookList: PropTypes.array.isRequired
     }
-
     render() {
         return (
             <div>
