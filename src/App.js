@@ -12,6 +12,12 @@ class App extends Component {
         bookListRead: []
     }
 
+    searchBooks(query) {
+        BooksAPI.search(query).then(book => {
+            console.debug(book);
+        });
+    }
+
     componentDidMount () {
         BooksAPI.getAll().then(books => {
             books.map(book => {
@@ -61,7 +67,11 @@ class App extends Component {
                                     */
 
                         }
-                        <input type="text" placeholder="Search by title or author"/>
+                        <input
+                            type="text"
+                            placeholder="Search by title or author"
+                            onChange={(event) => this.searchBooks(event.target.value)}
+                        />
                     </div>
                 </div>
                 <div className="search-books-results">
