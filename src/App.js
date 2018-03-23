@@ -89,13 +89,13 @@ class App extends Component {
                     <BookListView bookList={this.state.bookListRead}/>
                 </div>
                 <div className="mr-open-search">
-                    <a onClick={this.onCLickAddBook()}>Add Book</a>
+                    <a onClick={this.onClickAddBook()}>Add Book</a>
                 </div>
             </div>
         );
     }
 
-    onCLickAddBook() {
+    onClickAddBook() {
         return () => this.setState({
             showSearchPage: true
         });
