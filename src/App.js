@@ -13,12 +13,6 @@ class App extends Component {
         bookListRead: []
     }
 
-    searchBooks(query) {
-        BooksAPI.search(query).then(book => {
-            console.debug(book);
-        });
-    }
-
     componentDidMount () {
         BooksAPI.getAll().then(books => {
             books.map(book => {
