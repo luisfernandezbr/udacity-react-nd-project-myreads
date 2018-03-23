@@ -1,3 +1,15 @@
+.mr-header {
+    padding: 10px 0;
+    background: #2e7c31;
+    text-align: center;
+}
+
+.mr-header-title {
+    font-weight: 400;
+    margin: 0;
+    color: white;
+}
+
 .mr-title {
     padding-left: 5%;
     padding-right: 5%;
