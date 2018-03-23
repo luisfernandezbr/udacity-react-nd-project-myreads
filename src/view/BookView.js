@@ -11,9 +11,22 @@ class BookView extends Component {
 
         return (
             <div className="mr-book">
-                <img alt={book.name} className="mr-book-image" style={{
-                    backgroundImage: `url(${book.imageLinks.thumbnail})`
-                }}/>
+                <div className="book-top">
+                    <img alt={book.name} className="mr-book-image" style={{
+                        backgroundImage: `url(${book.imageLinks.thumbnail})`
+                    }}/>
+                    <div className="book-shelf-changer">
+                        <select>
+                            <option value="none" disabled>Move to...</option>
+                            <option value="currentlyReading">Currently Reading</option>
+                            <option value="wantToRead">Want to Read</option>
+                            <option value="read">Read</option>
+                            <option value="none">None</option>
+                        </select>
+                    </div>
+
+                </div>
+
                 <div className="mr-book-title">{book.title}</div>
                 <div className="mr-book-author">{book.authors}</div>
                 <br />
