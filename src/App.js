@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import './App.css';
 import TitleView from './view/TitleView'
 import BookListView from "./view/BookListView";
+import { Link, Route } from "react-router-dom"
 import * as BooksAPI from './data/BooksAPI'
 
 class App extends Component {
     state = {
         bookListReading: [],
         bookListWantToRead: [],
-        bookListRead: [],
-        showSearchPage: false
+        bookListRead: []
     }
 
     componentDidMount () {
@@ -35,13 +35,12 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                {
-                    this.state.showSearchPage ? (
-                        this.showSearchResult()
-                    ) : (
-                        this.showListResult()
-                    )
-                }
+                <Route exact path="/" render={() => (
+                    this.showListResult()
+                )}/>
+                <Route path="/search" render={() => (
+                    this.showSearchResult()
+                )}/>
             </div>
         )
     }
@@ -89,16 +88,10 @@ class App extends Component {
                     <BookListView bookList={this.state.bookListRead}/>
                 </div>
                 <div className="mr-open-search">
-                    <a href="#search" onClick={this.onClickSearchBook()}>Add Book</a>
+                    <Link to="/search" >Add Book</Link>
                 </div>
             </div>
         );
-    }
-
-    onClickSearchBook() {
-        return () => this.setState({
-            showSearchPage: true
-        });
     }
 }
 
