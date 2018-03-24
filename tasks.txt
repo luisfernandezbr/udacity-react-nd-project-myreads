@@ -1,0 +1,9 @@
+TO DO
+- Enable shelf swapping (Home and Search)
+- Handle books without "author" or "thumbnail"
+- Page refresh state (enable when search)
+- Clear browser history
+- Populate readme
+
+DONE
+- Implement back button on Search page
