@@ -14,23 +14,7 @@ class App extends Component {
     }
 
     componentDidMount () {
-        BooksAPI.getAll().then(books => {
-            books.map(book => {
-                if (book.shelf === 'currentlyReading') {
-                    this.setState({
-                        bookListReading: this.state.bookListReading.concat(book)
-                    });
-                } else if (book.shelf === 'wantToRead') {
-                    this.setState({
-                        bookListWantToRead: this.state.bookListWantToRead.concat(book)
-                    });
-                } else if (book.shelf === 'read') {
-                    this.setState({
-                        bookListRead: this.state.bookListRead.concat(book)
-                    });
-                }
-            });
-        });
+        this.loadAllBooks();
     }
 
     render() {
@@ -60,19 +44,57 @@ class App extends Component {
                 </header>
                 <div>
                     <TitleView textTitle="Currently Reading"/>
-                    <BookListView bookList={this.state.bookListReading}/>
+                    <BookListView bookList={this.state.bookListReading} onBookUpdated={this.onBookUpdated.bind(this)}/>
 
                     <TitleView textTitle="Want to Read"/>
-                    <BookListView bookList={this.state.bookListWantToRead}/>
+                    <BookListView bookList={this.state.bookListWantToRead} onBookUpdated={this.onBookUpdated.bind(this)}/>
 
                     <TitleView textTitle="Read"/>
-                    <BookListView bookList={this.state.bookListRead}/>
+                    <BookListView bookList={this.state.bookListRead} onBookUpdated={this.onBookUpdated.bind(this)}/>
                 </div>
                 <div className="mr-open-search">
                     <Link to="/search" >Add Book</Link>
                 </div>
             </div>
         );
+    }
+
+    onBookUpdated(updatedIds) {
+        console.log("onBookUpdated " + JSON.stringify(updatedIds));
+        this.updateBooks(updatedIds);
+    }
+
+    updateBooks(updatedIds) {
+        console.log("loadAllBooks " + JSON.stringify(updatedIds));
+
+        this.setState({
+            bookListReading: [],
+            bookListWantToRead: [],
+            bookListRead: []
+        });
+
+
+        this.loadAllBooks()
+    }
+
+    loadAllBooks() {
+        BooksAPI.getAll().then(books => {
+            books.map(book => {
+                if (book.shelf === 'currentlyReading') {
+                    this.setState({
+                        bookListReading: this.state.bookListReading.concat(book)
+                    });
+                } else if (book.shelf === 'wantToRead') {
+                    this.setState({
+                        bookListWantToRead: this.state.bookListWantToRead.concat(book)
+                    });
+                } else if (book.shelf === 'read') {
+                    this.setState({
+                        bookListRead: this.state.bookListRead.concat(book)
+                    });
+                }
+            });
+        });
     }
 }
 

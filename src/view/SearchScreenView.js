@@ -20,7 +20,6 @@ class SearchScreenView extends Component {
                 console.log(JSON.stringify(bookList))
                 console.log(Array.isPrototypeOf(bookList))
 
-
                 if (JSON.stringify(bookList).indexOf("books") > 0) {
 
                     bookList.map(book => console.log(book.toString()))

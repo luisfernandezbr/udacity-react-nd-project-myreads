@@ -4,7 +4,8 @@ import PropTypes from 'prop-types'
 
 class BookListView extends Component {
     static propTypes = {
-        bookList: PropTypes.array.isRequired
+        bookList: PropTypes.array.isRequired,
+        onBookUpdated: PropTypes.func
     }
 
     render() {
@@ -14,7 +15,7 @@ class BookListView extends Component {
                 {this.props.bookList.map(
                     (book, index)=> (
                         <li key={index}>
-                            <BookView book={book} />
+                            <BookView book={book} onBookUpdated={this.props.onBookUpdated}/>
                         </li>
                     )
                 )}
