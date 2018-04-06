@@ -21,7 +21,7 @@ class SearchScreenView extends Component {
             BooksAPI.search(query).then(searchBookList => {
                 if (this.hasBooksOnResponse(searchBookList)) {
 
-                    let shelvedSearchBookList = searchBookList.map( foundBook => {
+                    let shelvedSearchBookList = searchBookList.map(foundBook => {
                         let [filtered] = this.props.bookList.filter(
                             shelvedBook => (shelvedBook.id === foundBook.id)
                         )
@@ -29,7 +29,7 @@ class SearchScreenView extends Component {
                         if (filtered) {
                             foundBook.shelf = filtered.shelf
                         } else {
-                            foundBook.shelf = 'none' ;
+                            foundBook.shelf = 'none'
                         }
 
                         return foundBook;
