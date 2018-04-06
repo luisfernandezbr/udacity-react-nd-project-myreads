@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import BookView from "./BookView";
 import PropTypes from 'prop-types'
+
+import BookView from "./BookView";
 
 class BookListView extends Component {
     static propTypes = {

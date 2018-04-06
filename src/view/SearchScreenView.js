@@ -1,8 +1,9 @@
 import React, {Component} from "react"
-import BookListView from "./BookListView";
-import {Link} from "react-router-dom"
-import * as BooksAPI from "../data/BooksAPI";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom"
+
+import * as BooksAPI from "../data/BooksAPI";
+import BookListView from "./BookListView";
 
 class SearchScreenView extends Component {
 

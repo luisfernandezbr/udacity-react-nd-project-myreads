@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+
 import placeholder from '../image/book-cover-placeholder.jpg'
 
 class BookView extends Component {

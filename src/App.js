@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import './App.css';
-import SearchScreenView from "./view/SearchScreenView"
 import {Link, Route} from "react-router-dom"
+
+import './App.css';
 import * as BooksAPI from './data/BooksAPI'
+import SearchScreenView from "./view/SearchScreenView"
 import BookShelfView from "./view/BookShelfView";
 
 class App extends Component {
