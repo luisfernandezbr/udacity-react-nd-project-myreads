@@ -13,7 +13,7 @@ class App extends Component {
         bookList: [],
         loading: true,
         loadingTitle: "Loading Shelves…"
-    }
+    };
 
     componentDidMount() {
         this.loadAllBooks();
@@ -89,21 +89,24 @@ class App extends Component {
 
     updateBook(updatedBook, newShelf) {
         console.log(`[updatedBook: ${updatedBook.title}], [newShelf: ${newShelf}]`);
+        this.showLoading(`Updating book shelf…`);
 
         BooksAPI.update(updatedBook, newShelf)
             .then(() => {
                 const filteredList = this.state.bookList.filter(
                     book => (book.id !== updatedBook.id)
-                )
+                );
 
                 updatedBook.shelf = newShelf;
 
                 this.setState({
-                    bookList: filteredList.concat([updatedBook])
+                    bookList: filteredList.concat([updatedBook]),
+                    loading: false
                 })
             })
             .catch(error => {
-                console.error("Error trying to update book shelf. > " + error)
+                console.error("Error trying to update book shelf. > " + error);
+                this.hideLoading();
             })
     }
 
