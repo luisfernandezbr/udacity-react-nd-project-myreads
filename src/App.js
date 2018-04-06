@@ -31,13 +31,13 @@ class App extends Component {
         return (
             <SearchScreenView
                 bookList={this.state.bookList}
-                onUpdateBook={this.onUpdateBook.bind(this)}
+                onUpdateBook={this.updateBook.bind(this)}
             />
         );
     }
 
     showListResult() {
-        const SHELVES = [{
+        const BOOK_SHELVES = [{
             title: 'Currently Reading',
             key: 'currentlyReading'
         }, {
@@ -55,7 +55,7 @@ class App extends Component {
                 </header>
                 <div>
                     {
-                        SHELVES.map(shelf => (
+                        BOOK_SHELVES.map(shelf => (
                             <BookShelfView
                                 key={shelf.key}
                                 shelfKey={shelf.key}
@@ -65,7 +65,7 @@ class App extends Component {
                                         book => (book.shelf === shelf.key)
                                     )
                                 }
-                                onUpdateBook={this.onUpdateBook.bind(this)}
+                                onUpdateBook={this.updateBook.bind(this)}
                             />
                         ))
                     }
@@ -77,16 +77,16 @@ class App extends Component {
         );
     }
 
-    onUpdateBook(updatedBook, shelf) {
-        console.log(`[updatedBook: ${updatedBook.title}], [shelf: ${shelf}]`);
+    updateBook(updatedBook, newShelf) {
+        console.log(`[updatedBook: ${updatedBook.title}], [newShelf: ${newShelf}]`);
 
-        BooksAPI.update(updatedBook, shelf)
+        BooksAPI.update(updatedBook, newShelf)
             .then(() => {
                 const filteredList = this.state.bookList.filter(
                     book => (book.id !== updatedBook.id)
                 )
 
-                updatedBook.shelf = shelf;
+                updatedBook.shelf = newShelf;
 
                 this.setState({
                     bookList: filteredList.concat([updatedBook])
