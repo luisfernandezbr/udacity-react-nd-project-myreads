@@ -2,8 +2,13 @@ import React, { Component } from "react"
 import BookListView from "./BookListView";
 import { Link } from "react-router-dom"
 import * as BooksAPI from "../data/BooksAPI";
+import PropTypes from "prop-types";
 
 class SearchScreenView extends Component {
+
+    static propTypes = {
+        onUpdateBook: PropTypes.func.isRequired
+    }
 
     state = {
         query: '',
@@ -66,7 +71,9 @@ class SearchScreenView extends Component {
                     </div>
                 </div>
                 <div className="search-books-results">
-                    <BookListView bookList={this.state.bookList}/>
+                    <BookListView
+                        bookList={this.state.bookList}
+                        onUpdateBook={this.props.onUpdateBook}/>
                 </div>
             </div>
         )
