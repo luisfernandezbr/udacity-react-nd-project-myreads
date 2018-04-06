@@ -7,15 +7,15 @@ class BookListView extends Component {
     static propTypes = {
         bookList: PropTypes.array.isRequired,
         onUpdateBook: PropTypes.func.isRequired
-    }
+    };
 
     render() {
         return (
             <div className="mr-book-list-content" style={{flex: 1}}>
                 <ol className="mr-book-list">
                     {this.props.bookList.map(
-                        (book, index) => (
-                            <li key={index}>
+                        book => (
+                            <li key={book.id}>
                                 <BookView book={book} onUpdateBook={this.props.onUpdateBook}/>
                             </li>
                         )
