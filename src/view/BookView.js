@@ -11,8 +11,7 @@ class BookView extends Component {
 
     render() {
         const book = this.props.book;
-
-        let bookPlaceholder = this.loadPlaceholder(book);
+        const bookPlaceholder = this.loadPlaceholder(book);
 
         return (
             <div className="mr-book">
