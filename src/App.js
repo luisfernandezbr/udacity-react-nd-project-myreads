@@ -77,9 +77,24 @@ class App extends Component {
         );
     }
 
-    onUpdateBook(book, shelf) {
-        console.log("onUpdateBook - book: " + book.title + ", oldShelf: " + book.shelf);
-        console.log("onUpdateBook - newShelf: " + shelf);
+    onUpdateBook(updatedBook, shelf) {
+        console.log(`[updatedBook: ${updatedBook.title}], [shelf: ${shelf}]`);
+
+        BooksAPI.update(updatedBook, shelf)
+            .then(() => {
+                const filteredList = this.state.bookList.filter(
+                    book => (book.id !== updatedBook.id)
+                )
+
+                updatedBook.shelf = shelf;
+
+                this.setState({
+                    bookList: filteredList.concat([updatedBook])
+                })
+            })
+            .catch(error => {
+                console.error("Error trying to update book shelf. > " + error)
+            })
     }
 
     loadAllBooks() {
