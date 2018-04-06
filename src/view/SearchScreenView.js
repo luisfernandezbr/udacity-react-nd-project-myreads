@@ -1,6 +1,6 @@
-import React, { Component } from "react"
+import React, {Component} from "react"
 import BookListView from "./BookListView";
-import { Link } from "react-router-dom"
+import {Link} from "react-router-dom"
 import * as BooksAPI from "../data/BooksAPI";
 import PropTypes from "prop-types";
 
@@ -17,7 +17,7 @@ class SearchScreenView extends Component {
     }
 
     searchBooks(query) {
-        if (query.length > 2 ) {
+        if (query.length > 2) {
             BooksAPI.search(query).then(searchBookList => {
                 if (this.hasBooksOnResponse(searchBookList)) {
 

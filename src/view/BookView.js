@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import placeholder from '../image/book-cover-placeholder.jpg'
 
@@ -38,11 +38,11 @@ class BookView extends Component {
 
                 <div className="mr-book-title">{book.title}</div>
                 {
-                    book.authors && book.authors.map((author,index)=>
+                    book.authors && book.authors.map((author, index) =>
                         <div key={index} className="mr-book-author">{author}</div>
                     )
                 }
-                <br />
+                <br/>
             </div>
         );
     }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import SearchScreenView from "./view/SearchScreenView"
-import { Link, Route } from "react-router-dom"
+import {Link, Route} from "react-router-dom"
 import * as BooksAPI from './data/BooksAPI'
 import BookShelfView from "./view/BookShelfView";
 
@@ -10,7 +10,7 @@ class App extends Component {
         bookList: []
     }
 
-    componentDidMount () {
+    componentDidMount() {
         this.loadAllBooks();
     }
 
@@ -71,7 +71,7 @@ class App extends Component {
                     }
                 </div>
                 <div className="mr-open-search">
-                    <Link to="/search" >Add Book</Link>
+                    <Link to="/search">Add Book</Link>
                 </div>
             </div>
         );
