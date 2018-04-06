@@ -37,7 +37,11 @@ class BookView extends Component {
                 </div>
 
                 <div className="mr-book-title">{book.title}</div>
-                <div className="mr-book-author">{book.authors}</div>
+                {
+                    book.authors && book.authors.map((author,index)=>
+                        <div key={index} className="mr-book-author">{author}</div>
+                    )
+                }
                 <br />
             </div>
         );
