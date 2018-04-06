@@ -17,9 +17,6 @@ class SearchScreenView extends Component {
     }
 
     searchBooks(query) {
-        console.log(`current query: ${query}`)
-        console.log(`current query length: ${query.length}`)
-
         if (query.length > 2 ) {
             BooksAPI.search(query).then(searchBookList => {
                 if (this.hasBooksOnResponse(searchBookList)) {
@@ -34,8 +31,6 @@ class SearchScreenView extends Component {
                         } else {
                             foundBook.shelf = 'none' ;
                         }
-
-                        console.log("foundBook " + JSON.stringify(foundBook.shelf));
 
                         return foundBook;
                     })
