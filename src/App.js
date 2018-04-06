@@ -1,14 +1,18 @@
 import React, {Component} from 'react';
 import {Link, Route} from "react-router-dom"
 
+
 import './App.css';
 import * as BooksAPI from './data/BooksAPI'
 import SearchScreenView from "./view/SearchScreenView"
 import BookShelfView from "./view/BookShelfView";
+import LoadingView from "./view/LoadingView";
 
 class App extends Component {
     state = {
-        bookList: []
+        bookList: [],
+        loading: true,
+        loadingTitle: "Loading Shelves…"
     }
 
     componentDidMount() {
@@ -17,22 +21,27 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div className="mr-main">
                 <Route exact path="/" render={() => (
                     this.showListResult()
                 )}/>
                 <Route path="/search" render={() => (
                     this.showSearchResult()
                 )}/>
+                <LoadingView loadingTitle={this.state.loadingTitle} loading={this.state.loading} />
             </div>
         )
     }
+
+
 
     showSearchResult() {
         return (
             <SearchScreenView
                 bookList={this.state.bookList}
                 onUpdateBook={this.updateBook.bind(this)}
+                onShowLoading={this.showLoading.bind(this)}
+                onHideLoading={this.hideLoading.bind(this)}
             />
         );
     }
@@ -101,9 +110,25 @@ class App extends Component {
     loadAllBooks() {
         BooksAPI.getAll().then(books => {
             this.setState({
-                bookList: books
+                bookList: books,
+                loading: false
             })
         });
+    }
+
+    showLoading(loadingTitle) {
+        console.log(`[showLoading: ${loadingTitle}]`);
+        this.setState({
+            loadingTitle: loadingTitle,
+            loading: true
+        })
+    }
+
+    hideLoading() {
+        console.log(`[hideLoading]`);
+        this.setState({
+            loading: false
+        })
     }
 }
 

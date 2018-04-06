@@ -16,7 +16,9 @@ class SearchScreenView extends Component {
 
     static propTypes = {
         bookList: PropTypes.array.isRequired,
-        onUpdateBook: PropTypes.func.isRequired
+        onUpdateBook: PropTypes.func.isRequired,
+        onShowLoading: PropTypes.func.isRequired,
+        onHideLoading: PropTypes.func.isRequired
     }
 
     state = {
@@ -30,6 +32,9 @@ class SearchScreenView extends Component {
 
     searchBooks(query) {
         if (query.length > 2) {
+
+            this.props.onShowLoading(`Searching by '${query}'`);
+
             BooksAPI.search(query).then(searchBookList => {
                 if (this.hasBooksOnResponse(searchBookList)) {
 
@@ -50,20 +55,24 @@ class SearchScreenView extends Component {
                     this.setState(() => ({
                         searchBookList: shelvedSearchBookList
                     }))
-                } else {
-                    this.setState(() => ({
-                        searchBookList: []
-                    }))
-                }
 
-            }).catch(
-                console.log("error!!!")
-            )
+                    this.props.onHideLoading();
+                } else {
+                    this.handleEmptySearchResult();
+                }
+            })
         } else {
             this.setState(() => ({
                 searchBookList: []
             }))
         }
+    }
+
+    handleEmptySearchResult() {
+        this.setState(() => ({
+            searchBookList: []
+        }))
+        this.props.onHideLoading()
     }
 
     hasBooksOnResponse(searchBookList) {
