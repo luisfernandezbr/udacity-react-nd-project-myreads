@@ -1,11 +1,18 @@
 import React, {Component} from "react"
 import PropTypes from "prop-types";
+import debounce from 'lodash.debounce';
+
 import {Link} from "react-router-dom"
 
 import * as BooksAPI from "../data/BooksAPI";
 import BookListView from "./BookListView";
 
 class SearchScreenView extends Component {
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.emitChangeDebounced = debounce(this.searchBooks, 300);
+    }
 
     static propTypes = {
         bookList: PropTypes.array.isRequired,
@@ -15,6 +22,10 @@ class SearchScreenView extends Component {
     state = {
         query: '',
         searchBookList: []
+    }
+
+    handleChange(event) {
+        this.emitChangeDebounced(event.target.value);
     }
 
     searchBooks(query) {
@@ -68,7 +79,7 @@ class SearchScreenView extends Component {
                         <input
                             type="text"
                             placeholder="Search by title or author"
-                            onChange={(event) => this.searchBooks(event.target.value)}
+                            onChange={this.handleChange}
                         />
                     </div>
                 </div>
