@@ -1,16 +1,13 @@
 import React, {Component} from 'react';
 import './App.css';
-import TitleView from './view/TitleView'
-import BookListView from "./view/BookListView";
 import SearchScreenView from "./view/SearchScreenView"
 import { Link, Route } from "react-router-dom"
 import * as BooksAPI from './data/BooksAPI'
+import BookShelfView from "./view/BookShelfView";
 
 class App extends Component {
     state = {
-        bookListReading: [],
-        bookListWantToRead: [],
-        bookListRead: []
+        bookList: []
     }
 
     componentDidMount () {
@@ -32,25 +29,43 @@ class App extends Component {
 
     showSearchResult() {
         return (
-            <SearchScreenView/>
+            <SearchScreenView onUpdateBook={this.onUpdateBook.bind(this)}/>
         );
     }
 
     showListResult() {
+        const SHELVES = [{
+            title: 'Currently Reading',
+            key: 'currentlyReading'
+        }, {
+            title: 'Want to read',
+            key: 'wantToRead'
+        }, {
+            title: 'Read',
+            key: 'read'
+        }];
+
         return (
             <div>
                 <header className="mr-header">
                     <h1 className="mr-header-title">MyReads</h1>
                 </header>
                 <div>
-                    <TitleView textTitle="Currently Reading"/>
-                    <BookListView bookList={this.state.bookListReading} onBookUpdated={this.onBookUpdated.bind(this)}/>
-
-                    <TitleView textTitle="Want to Read"/>
-                    <BookListView bookList={this.state.bookListWantToRead} onBookUpdated={this.onBookUpdated.bind(this)}/>
-
-                    <TitleView textTitle="Read"/>
-                    <BookListView bookList={this.state.bookListRead} onBookUpdated={this.onBookUpdated.bind(this)}/>
+                    {
+                        SHELVES.map(shelf => (
+                            <BookShelfView
+                                key={shelf.key}
+                                shelfKey={shelf.key}
+                                shelfTitle={shelf.title}
+                                bookList={
+                                    this.state.bookList.filter(
+                                        book => (book.shelf === shelf.key)
+                                    )
+                                }
+                                onUpdateBook={this.onUpdateBook.bind(this)}
+                            />
+                        ))
+                    }
                 </div>
                 <div className="mr-open-search">
                     <Link to="/search" >Add Book</Link>
@@ -59,41 +74,16 @@ class App extends Component {
         );
     }
 
-    onBookUpdated(updatedIds) {
-        console.log("onBookUpdated " + JSON.stringify(updatedIds));
-        this.updateBooks(updatedIds);
-    }
-
-    updateBooks(updatedIds) {
-        console.log("loadAllBooks " + JSON.stringify(updatedIds));
-
-        this.setState({
-            bookListReading: [],
-            bookListWantToRead: [],
-            bookListRead: []
-        });
-
-
-        this.loadAllBooks()
+    onUpdateBook(book, shelf) {
+        console.log("onUpdateBook - book: " + book.title + ", oldShelf: " + book.shelf);
+        console.log("onUpdateBook - newShelf: " + shelf);
     }
 
     loadAllBooks() {
         BooksAPI.getAll().then(books => {
-            books.map(book => {
-                if (book.shelf === 'currentlyReading') {
-                    this.setState({
-                        bookListReading: this.state.bookListReading.concat(book)
-                    });
-                } else if (book.shelf === 'wantToRead') {
-                    this.setState({
-                        bookListWantToRead: this.state.bookListWantToRead.concat(book)
-                    });
-                } else if (book.shelf === 'read') {
-                    this.setState({
-                        bookListRead: this.state.bookListRead.concat(book)
-                    });
-                }
-            });
+            this.setState({
+                bookList: books
+            })
         });
     }
 }
