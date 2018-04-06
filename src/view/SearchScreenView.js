@@ -21,10 +21,6 @@ class SearchScreenView extends Component {
 
         if (query.length > 2 ) {
             BooksAPI.search(query).then(bookList => {
-
-                console.log(JSON.stringify(bookList))
-                console.log(Array.isPrototypeOf(bookList))
-
                 if (JSON.stringify(bookList).indexOf("books") > 0) {
 
                     bookList.map(book => console.log(book.toString()))
