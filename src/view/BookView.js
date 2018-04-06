@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import placeholder from '../image/book-cover-placeholder.jpg'
 
 class BookView extends Component {
     static propTypes = {
@@ -7,16 +8,19 @@ class BookView extends Component {
         onUpdateBook: PropTypes.func.isRequired
     }
 
+
     render() {
         const book = this.props.book;
+
+        let bookPlaceholder = this.loadPlaceholder(book);
 
         return (
             <div className="mr-book">
                 <div className="book-top">
-                    <img alt={book.name} className="mr-book-image" style={{
-                        backgroundImage: `url(${book.imageLinks.thumbnail})`
-                    }}/>
 
+                    <img alt={book.name} className="mr-book-image" style={{
+                        backgroundImage: `url(${bookPlaceholder})`
+                    }}/>
 
                     <div className="book-shelf-changer">
                         <select defaultValue={book.shelf} onChange={event => {
@@ -37,6 +41,14 @@ class BookView extends Component {
                 <br />
             </div>
         );
+    }
+
+    loadPlaceholder(book) {
+        if (book && book.imageLinks && book.imageLinks.thumbnail) {
+            return book.imageLinks.thumbnail;
+        } else {
+            return placeholder;
+        }
     }
 }
 
