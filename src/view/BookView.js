@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 class BookView extends Component {
     static propTypes = {
         book: PropTypes.object.isRequired,
-        onUpdateBook: PropTypes.func
+        onUpdateBook: PropTypes.func.isRequired
     }
 
     render() {
@@ -22,7 +22,7 @@ class BookView extends Component {
                         <select defaultValue={book.shelf} onChange={event => {
                             this.props.onUpdateBook(book, event.target.value)
                         }}>
-                            <option value="none" disabled>Move to...</option>
+                            <option value="" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
                             <option value="read">Read</option>

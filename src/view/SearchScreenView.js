@@ -7,12 +7,13 @@ import PropTypes from "prop-types";
 class SearchScreenView extends Component {
 
     static propTypes = {
+        bookList: PropTypes.array.isRequired,
         onUpdateBook: PropTypes.func.isRequired
     }
 
     state = {
         query: '',
-        bookList: []
+        searchBookList: []
     }
 
     searchBooks(query) {
@@ -20,16 +21,31 @@ class SearchScreenView extends Component {
         console.log(`current query length: ${query.length}`)
 
         if (query.length > 2 ) {
-            BooksAPI.search(query).then(bookList => {
-                if (JSON.stringify(bookList).indexOf("books") > 0) {
+            BooksAPI.search(query).then(searchBookList => {
+                if (this.hasBooksOnResponse(searchBookList)) {
 
-                    bookList.map(book => console.log(book.toString()))
+                    let shelvedSearchBookList = searchBookList.map( foundBook => {
+                        let [filtered] = this.props.bookList.filter(
+                            shelvedBook => (shelvedBook.id === foundBook.id)
+                        )
+
+                        if (filtered) {
+                            foundBook.shelf = filtered.shelf
+                        } else {
+                            foundBook.shelf = 'none' ;
+                        }
+
+                        console.log("foundBook " + JSON.stringify(foundBook.shelf));
+
+                        return foundBook;
+                    })
+
                     this.setState(() => ({
-                        bookList: bookList
+                        searchBookList: shelvedSearchBookList
                     }))
                 } else {
                     this.setState(() => ({
-                        bookList: []
+                        searchBookList: []
                     }))
                 }
 
@@ -38,9 +54,13 @@ class SearchScreenView extends Component {
             )
         } else {
             this.setState(() => ({
-                bookList: []
+                searchBookList: []
             }))
         }
+    }
+
+    hasBooksOnResponse(searchBookList) {
+        return JSON.stringify(searchBookList).indexOf("books") > 0;
     }
 
     render() {
@@ -68,7 +88,7 @@ class SearchScreenView extends Component {
                 </div>
                 <div className="search-books-results">
                     <BookListView
-                        bookList={this.state.bookList}
+                        bookList={this.state.searchBookList}
                         onUpdateBook={this.props.onUpdateBook}/>
                 </div>
             </div>

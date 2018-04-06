@@ -29,7 +29,10 @@ class App extends Component {
 
     showSearchResult() {
         return (
-            <SearchScreenView onUpdateBook={this.onUpdateBook.bind(this)}/>
+            <SearchScreenView
+                bookList={this.state.bookList}
+                onUpdateBook={this.onUpdateBook.bind(this)}
+            />
         );
     }
 

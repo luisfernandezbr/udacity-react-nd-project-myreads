@@ -19,6 +19,7 @@ class BookListView extends Component {
                         </li>
                     )
                 )}
+
                 </ol>
             </div>
         );
