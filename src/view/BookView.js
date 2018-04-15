@@ -18,7 +18,9 @@ class BookView extends Component {
             <div className="mr-book">
                 <div className="book-top">
 
-                    <img alt={book.name} className="mr-book-image" style={{
+                    <div className="mr-book-image" style={{
+                        width: 128,
+                        height: 188,
                         backgroundImage: `url(${bookPlaceholder})`
                     }}/>
 
@@ -42,7 +44,6 @@ class BookView extends Component {
                         <div key={index} className="mr-book-author">{author}</div>
                     )
                 }
-                <br/>
             </div>
         );
     }

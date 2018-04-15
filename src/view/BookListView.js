@@ -11,7 +11,7 @@ class BookListView extends Component {
 
     render() {
         return (
-            <div className="mr-book-list-content" style={{flex: 1}}>
+            <div className="mr-book-list-content">
                 <ol className="mr-book-list">
                     {this.props.bookList.map(
                         book => (
