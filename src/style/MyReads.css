@@ -156,11 +156,11 @@
     border-radius: 10px;
     position: fixed;
     padding: 0;
-    margin: 10%;
+    margin: 2%;
     top: 0;
     left: 0;
-    width: 80%;
-    height: 80%;
+    width: 96%;
+    height: 96%;
     background: rgba(0, 0, 0, 0.80);
     display: flex;
     align-items: center;
