@@ -8,7 +8,7 @@ To build and run the project you will need to have **Npm** or **Yarn** installed
 To learn more:
 
 * [**Npm**](https://www.npmjs.com/get-npm)
-* [**Yarn**](https://yarnpkg.com/en/docs/instal)
+* [**Yarn**](https://yarnpkg.com/en/docs/install)
 
 
 ## Getting source code
