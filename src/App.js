@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {Link, Route} from "react-router-dom"
 
-
-import './App.css';
 import * as BooksAPI from './data/BooksAPI'
 import SearchScreenView from "./view/SearchScreenView"
 import BookShelfView from "./view/BookShelfView";
