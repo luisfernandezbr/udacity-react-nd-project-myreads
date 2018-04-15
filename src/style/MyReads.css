@@ -55,7 +55,7 @@
 }
 
 .mr-book-image {
-    box-shadow: 0 3px 60px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 3px 60px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     background: #eee;
     /*width: 128px;*/
     /*box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);*/
@@ -76,6 +76,7 @@
     right: 25px;
     bottom: 25px;
 }
+
 .mr-open-search a {
     display: block;
     width: 50px;
@@ -83,10 +84,9 @@
     border-radius: 50%;
     background: #2e7d32 url('../icons/add.svg') no-repeat center;
     background-size: 28px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     font-size: 0;
 }
-
 
 .mr-search-books-bar {
     position: fixed;
@@ -95,7 +95,7 @@
     left: 0;
     z-index: 5;
     display: flex;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 0 6px rgba(0, 0, 0, 0.23);
 }
 
 .mr-search-books-input-wrapper {
@@ -142,7 +142,7 @@
     border-radius: 50%;
     background: #60ac5d url('../icons/arrow-drop-down.svg') no-repeat center;
     background-size: 20px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .mr-book-shelf-changer select {
