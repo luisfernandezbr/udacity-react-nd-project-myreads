@@ -82,9 +82,9 @@ class SearchScreenView extends Component {
     render() {
         return (
             <div className="search-books">
-                <div className="search-books-bar">
-                    <Link to="/" className="close-search">Close</Link>
-                    <div className="search-books-input-wrapper">
+                <div className="mr-search-books-bar">
+                    <Link to="/" className="mr-close-search">Close</Link>
+                    <div className="mr-search-books-input-wrapper">
                         <input
                             type="text"
                             placeholder="Search by title or author"
@@ -92,7 +92,7 @@ class SearchScreenView extends Component {
                         />
                     </div>
                 </div>
-                <div className="search-books-results">
+                <div className="mr-search-books-results">
                     <BookListView
                         bookList={this.state.searchBookList}
                         onUpdateBook={this.props.onUpdateBook}/>

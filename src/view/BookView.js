@@ -16,7 +16,7 @@ class BookView extends Component {
 
         return (
             <div className="mr-book">
-                <div className="book-top">
+                <div className="mr-book-top">
 
                     <div className="mr-book-image" style={{
                         width: 128,
@@ -24,7 +24,7 @@ class BookView extends Component {
                         backgroundImage: `url(${bookPlaceholder})`
                     }}/>
 
-                    <div className="book-shelf-changer">
+                    <div className="mr-book-shelf-changer">
                         <select defaultValue={book.shelf} onChange={event => {
                             this.props.onUpdateBook(book, event.target.value)
                         }}>
