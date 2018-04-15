@@ -82,7 +82,7 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: #2e7d32 url('../icons/icon_search_white.svg') no-repeat center;
+    background: #2e7d32 url('../icons/icon-search-white.svg') no-repeat center;
     background-size: 28px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     font-size: 0;
@@ -117,7 +117,7 @@
     left: 15px;
     width: 50px;
     height: 53px;
-    background: white url('../icons/arrow-back.svg') no-repeat center;
+    background: white url('../icons/icon-arrow-back-gray.svg') no-repeat center;
     background-size: 28px;
     font-size: 0;
 }
@@ -140,7 +140,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #60ac5d url('../icons/arrow-drop-down.svg') no-repeat center;
+    background: #60ac5d url('../icons/icon-arrow-dropdown-white.svg') no-repeat center;
     background-size: 20px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
